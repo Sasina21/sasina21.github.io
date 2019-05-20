@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="src/js/ministry_pie.js"></script>
+    <script type="text/javascript" src="src/js/education_pie.js"></script>
+    <script type="text/javascript" src="src/js/transport_pie.js"></script>
     <script type="text/javascript" src="src/js/country_pie.js"></script>
-    <script type="text/javascript" src="src/js/project_amount_pie.js"></script>
-    <script type="text/javascript" src="src/js/project_pie.js"></script>
+    <script type="text/javascript" src="src/js/top5.js"></script>
+    <script type="text/javascript" src="src/js/project_bar.js"></script>
     <script type="text/javascript" src="src/js/budget_ts.js"></script>
     <style>
         .chart {
@@ -29,42 +30,51 @@
         <div class="row">
             <div class="col-md-12" align="center">
                 <div class="p-4">
-                    <h1>กลุ่มจังหวัดภาคตะวันออก 2</h1>
-                    <h3>นครนายก ปราจีนบุรี สระแก้ว จันทบุรี ตราด</h3>
+                    <h3 style="padding-top: 50px;">การจัดสรรงบประมาณปจังหวัดขอนแก่น ประจำปี พ.ศ. 2562</h3>
                     <br />
                     <p>อ้างอิงข้อมูลจาก http://www.bb.go.th/web/budget/province/province_bud62/</p>
                 </div>
             </div>
         </div>
+        <div class="row pt-4">
+            <div class="col">
+                <h4 style="padding-bottom: 20px;">Top 5 กระทรวงที่ได้งบประมาณมากที่สุด</h4>
+                <div id="top5_bar" class="chart"></div>
+                <p style="color:rgb(71, 61, 61);font-size:100%;text-align:left;padding-top: 50px;text-indent: 50px;">
+                    จากข้อมูลงบประมาณของจังหวัดขอนแก่นในปี 2562 จะเห็นว่า กระทรวงที่ได้รับงบประมาณมากที่สุดได้แก่กระทรวงศึกษาธิการ ได้งบประมาณถึง 8,938,751,377.00 บาท รองลงมาได้แก่ กระทรวงคมนาคม กระทรวงเกษตรและสหกรณ์ กระทรวงมหาดไทย จังหวัดและกลุ่มจังหวัด ตามลำดับ
+                </p>
+            </div>
+        </div>
+
         <div class="row pt-5">
-            <div class="col-md-6">
-                <h4>งบประมาณแบ่งตามกระทรวง ปี 62</h4>
-                <div id="ministry_pie" class="chart"></div>
-                <p>งบประมาณเฉลี่ยต่อกระทรวง: 661,565,071.70 บาท</p>
-            </div>
-            <div class="col-md-6">
-                <h4>งบประมาณแบ่งตามจังหวัด ปี 62</h4>
-                <div id="country_pie" class="chart"></div>
-                <p>จังหวัดที่งบประมาณน้อยที่สุด: ตราด (2,828,784,744 บาท)</p>
-                <p>จังหวัดที่งบประมาณมากที่สุด: จันทบุรี (6,253,304,134 บาท)</p>
+            <div class="col">
+                <p style="color:rgb(71, 61, 61);font-size:130%;text-align:left;padding-top: 50px;text-indent: 50px;">
+                    แล้วงบประมาณเหล่านั้น ทางกระทรวงศึกษาธิการในจังหวัดขอนแก่นบริหารอย่างไร ? 
+                </p>
+                <p style="color:rgb(71, 61, 61);font-size:100%;text-align:left;padding-bottom: 20px;text-indent: 50px;">
+                    ทางกระทรวงศึกษาธิการจังหวัดขอนแก่นได้วางแผนงานต่างๆไว้มากมาย โดยใช้งบประมาณดังนี้
+                </p>
+                <h4>งบประมาณกระทรวงศึกษาธิการ</h4>
+                <div id="education_pie" class="chart"></div>
             </div>
         </div>
-        <div class="row pt-4">
-            <div class="col">
-                <h4>งบประมาณแบ่งตามแผนงาน ปี 62</h4>
-                <div id="project_pie" class="chart"></div>
+
+        <div class="row pt-5">
+                <div class="col">
+                    <p style="color:rgb(71, 61, 61);font-size:140%;text-align:center;padding-bottom: 20px;text-indent: 50px;">
+                        งบประมาณที่ถูกจัดสรรให้แผนงานต่างๆของกระทรวงศึกษาธิการ
+                    </p>
+                    <div id="project_table" class="chart"></div>
+                </div>
             </div>
-        </div>
+
         <div class="row pt-4">
             <div class="col">
-                <h4>จำนวนแผนงานแบ่งตามจังหวัด ปี 62</h4>
-                <div id="project_amount_pie" class="chart"></div>
-            </div>
-        </div>
-        <div class="row pt-4">
-            <div class="col">
-                <h4>งบประมาณรวมย้อนหลัง ปี 47-62</h4>
+                <p style="color:rgb(71, 61, 61);font-size:140%;text-align:center;padding-bottom: 0px;">
+                    งบประมาณของกระทรวงศึกษาธิการย้อนหลัง ปี 51-62
+                </p>
                 <div id="budget_ts"></div>
+                <p style="color:rgb(71, 61, 61);font-size:100%;text-align:left;padding-bottom: 50px;text-indent: 50px;">จากกราฟนี้แสดงให้เห็นว่าประเทศไทยนั้นใส่ใจกับการศึกษามากขึ้นกว่าอดีต เพราะมีการจัดสรรงบประมาณให้กระทรวงศึกษาธิการมากขึ้น และมีแนวโน้มว่าจะเพิ่มขึ้นในทุกๆปี</p>
             </div>
         </div>
     </div>
